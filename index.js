@@ -87,7 +87,9 @@ module.exports = function(options, onprogress) {
 
 	if (drain) tr.resume();
 	if (onprogress) tr.on('progress', onprogress);
-
+	tr.setTransfered = function(n){
+		transfered += n;	
+	};
 	tr.progress = function() {
 		update.speed = speed(0);
 		update.eta = Math.round(update.remaining / update.speed);
